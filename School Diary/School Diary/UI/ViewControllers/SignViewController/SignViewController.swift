@@ -9,6 +9,11 @@ import UIKit
 import SchoolDiaryUIComponents
 import SnapKit
 
+protocol SignViewControllerProtocol: BaseUIViewControllerProtocol {
+    var email: String? { get }
+    var password: String? { get}
+}
+
 final class SignViewController: BaseUIViewController {
     private lazy var signBackgroundImageView: UIImageView = {
         let imageView = UIImageView.default
@@ -26,7 +31,11 @@ final class SignViewController: BaseUIViewController {
         return label
     }()
     
-    private lazy var emailTextField = UITextField(placeholder: "Enter your email")
+    private lazy var emailTextField: BaseUITextField = {
+        let textField = BaseUITextField(placeholder: "Enter your email")
+        textField.isHidden = true
+        return textField
+    }()
     
     private lazy var passwordTextField: PasswordTextField = {
         let textField = PasswordTextField(placeholder: "Enter your password")
@@ -54,13 +63,15 @@ final class SignViewController: BaseUIViewController {
         return button
     }()
     
-    private let presenter: SignPresenterProtocol
+    private var presenter: SignPresenterProtocol
     
     init(withType controllerType: SignControllerType = .initialScreen) {
         self.presenter = SignPresenter(withType: controllerType)
         super.init(nibName: nil, bundle: nil)
+        self.presenter.setView(self)
         guard controllerType == .signScreen else { return }
         
+        self.emailTextField.isHidden = false
         self.passwordTextField.isHidden = false
         self.resetPasswordButton.isHidden = false
     }
@@ -95,6 +106,12 @@ extension SignViewController {
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
         }
         
+        emailTextField.snp.makeConstraints { make in
+            make.bottom.equalTo(passwordTextField.snp.top).offset(-24)
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
+            make.height.equalTo(44)
+        }
+        
         passwordTextField.snp.makeConstraints { make in
             make.bottom.equalTo(resetPasswordButton.snp.top).offset(-29)
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 20))
@@ -120,5 +137,20 @@ extension SignViewController {
 fileprivate extension SignViewController {
     @objc func signAction(_ sender: UIButton) {
         self.presenter.signAction()
+    }
+}
+
+// MARK: - SignViewControllerPresenter
+extension SignViewController: SignViewControllerProtocol {
+    var email: String? {
+        get {
+            return self.emailTextField.text
+        }
+    }
+    
+    var password: String? {
+        get {
+            return self.passwordTextField.text
+        }
     }
 }

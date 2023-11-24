@@ -10,12 +10,34 @@ import UIKit
 enum Constants {
     enum Images {
         case signBackground
+        case userExampleAvatar
+        case userExampleQR
+        case settingsIcon
+        case signOutIcon
+        case profileIcon
         
         var image: UIImage? {
             switch self {
                 case .signBackground:
                     return UIImage(named: "SignBackground")
+                case .userExampleAvatar:
+                    return UIImage(named: "UserAvatarExample")
+                case .userExampleQR:
+                    return UIImage(named: "UserQRExample")
+                case .settingsIcon:
+                    return UIImage(named: "SettingsIcon")
+                case .signOutIcon:
+                    return UIImage(named: "SignOutIcon")
+                case .profileIcon:
+                    return UIImage(named: "AccountTabBarIcon")
             }
         }
+    }
+    
+    static var isDebug: Bool {
+#if DEBUG
+        return true
+#endif
+        return false
     }
 }

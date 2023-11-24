@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class PasswordTextField: UITextField {
+open class PasswordTextField: BaseUITextField {
     private lazy var hideButton: UIButton = {
         let button = UIButton()
         button.setTitle(nil, for: .normal)
@@ -15,31 +15,14 @@ open class PasswordTextField: UITextField {
         button.addTarget(self, action: #selector(hideButtonDidTap), for: .touchUpInside)
         return button
     }()
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setupTextField()
-    }
-    
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.setupTextField()
-    }
-    
-    @objc public convenience init(placeholder: String? = nil) {
-        self.init()
-        self.borderStyle = .roundedRect
-        self.placeholder = placeholder
-        self.autocapitalizationType = .none
-        self.autocorrectionType = .no
-        self.setupTextField()
-    }
 }
 
 // MARK: -
 // MARK: Setup textField methods
-fileprivate extension PasswordTextField {
-    func setupTextField() {
+extension PasswordTextField {
+    override public func setupTextField() {
+        super.setupTextField()
+        
         self.isSecureTextEntry = true
         self.rightView = self.hideButton
         self.rightViewMode = .always

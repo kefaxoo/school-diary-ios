@@ -11,11 +11,33 @@ import SchoolDiaryUIComponents
 final class MainCoordinator {
     static let shared = MainCoordinator()
     
+    var window: UIWindow?
+    
     fileprivate init() {}
     
-    var initialController: UIViewController {
-        let signVC = SignViewController().createNavigationController
-        return signVC
+    let signVC = SignViewController().createNavigationController
+    
+    var tabBar: UITabBarController? {
+        guard let currentUser = RealmManager<LocalUserModel>().read().first else { return nil }
+        
+        switch currentUser.role {
+            case .pupil:
+                break
+            case .teacher:
+                return TeacherTabBarController()
+            default:
+                break
+        }
+        
+        return nil
+    }
+    
+    var initialController: UIViewController? {
+        if SettingsManager.shared.account.accessToken?.isEmpty ?? true {
+            return self.signVC
+        } else {
+            return self.tabBar
+        }
     }
     
     var currentController: UIViewController? {
@@ -24,6 +46,10 @@ final class MainCoordinator {
         var currentController: UIViewController! = rootController
         while currentController.presentedViewController != nil {
             currentController = currentController.presentedViewController
+        }
+        
+        if let currentTabBar = currentController as? UITabBarController {
+            currentController = currentTabBar.selectedViewController
         }
         
         return currentController
@@ -44,6 +70,13 @@ fileprivate extension MainCoordinator {
             self?.currentController?.present(vc, animated: animated, completion: completion)
         }
     }
+    
+    func makeRootVC(_ vc: UIViewController) {
+        DispatchQueue.main.async { [weak self] in
+            self?.window?.rootViewController = vc
+            self?.window?.makeKeyAndVisible()
+        }
+    }
 }
 
 // MARK: -
@@ -51,5 +84,19 @@ fileprivate extension MainCoordinator {
 extension MainCoordinator {
     func pushSignController() {
         self.pushViewController(SignViewController(withType: .signScreen))
+    }
+    
+    func pushSettingsController() {
+        self.pushViewController(SettingsViewController())
+    }
+    
+    func makeTabBarAsRoot() {
+        guard let tabBar else { return }
+        
+        self.makeRootVC(tabBar)
+    }
+    
+    func makeSignVCAsRoot() {
+        self.makeRootVC(SignViewController().createNavigationController)
     }
 }

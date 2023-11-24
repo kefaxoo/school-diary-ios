@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import AlertKit
+
+public protocol BaseUIViewControllerProtocol: AnyObject {
+    func spinner(isShow: Bool)
+}
 
 open class BaseUIViewController: UIViewController {}
 
@@ -22,7 +27,7 @@ extension BaseUIViewController {
 // MARK: Setup interface methods
 extension BaseUIViewController {
     @objc open func setupInterface() {
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(red: 0.975, green: 0.975, blue: 0.975, alpha: 1)
         self.setupLayout()
         self.setupConstraints()
     }
@@ -38,5 +43,16 @@ extension BaseUIViewController {
         super.touchesBegan(touches, with: event)
         
         self.view.endEditing(true)
+    }
+}
+
+// MARK: - BaseUIViewControllerProtocol
+extension BaseUIViewController: BaseUIViewControllerProtocol {
+    public func spinner(isShow: Bool) {
+        if isShow {
+            AlertKitAPI.present(icon: .spinnerLarge, style: .iOS16AppleMusic)
+        } else {
+            AlertKitAPI.dismissAllAlerts()
+        }
     }
 }
