@@ -15,6 +15,8 @@ enum Constants {
         case settingsIcon
         case signOutIcon
         case profileIcon
+        case menuNavigationButtonIcon
+        case timetableIcon
         
         var image: UIImage? {
             switch self {
@@ -30,6 +32,10 @@ enum Constants {
                     return UIImage(named: "SignOutIcon")
                 case .profileIcon:
                     return UIImage(named: "AccountTabBarIcon")
+                case .menuNavigationButtonIcon:
+                    return UIImage(named: "MenuNavigationButtonIcon")
+                case .timetableIcon:
+                    return UIImage(named: "TimetableTabBarIcon")
             }
         }
     }

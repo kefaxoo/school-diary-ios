@@ -37,7 +37,7 @@ extension TeacherViewController {
         super.setupConstraints()
         classButton.snp.makeConstraints { make in
             make.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-32)
-            make.leading.trailing.equalTo(UIEdgeInsets(horizontal: 131))
+            make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 131))
             make.height.equalTo(48)
         }
     }

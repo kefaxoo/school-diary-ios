@@ -10,6 +10,7 @@ import FriendlyURLSession
 
 enum SchoolsDiaryApi {
     case signIn(email: String, password: String)
+    case teacherInfo
 }
 
 extension SchoolsDiaryApi: BaseRestApiEnum {
@@ -22,6 +23,8 @@ extension SchoolsDiaryApi: BaseRestApiEnum {
         switch self {
             case .signIn:
                 return "/user"
+            case .teacherInfo:
+                return "/user/info/teacher"
         }
     }
     
@@ -35,8 +38,10 @@ extension SchoolsDiaryApi: BaseRestApiEnum {
     var headers: FriendlyURLSession.Headers? {
         var headers = Headers()
         switch self {
-            default:
+            case .signIn:
                 break
+            default:
+                headers["x-schools-token"] = SettingsManager.shared.account.accessToken
         }
         
         return headers
@@ -48,6 +53,8 @@ extension SchoolsDiaryApi: BaseRestApiEnum {
             case .signIn(let email, let password):
                 parameters["email"] = email
                 parameters["password"] = password
+            default:
+                break
         }
         
         return parameters

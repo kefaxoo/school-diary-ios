@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class LocalUserModel: Object {
+class LocalUserModel: Object {
     @Persisted dynamic var roleRawType = 0
     @Persisted dynamic var name = ""
     @Persisted dynamic var surname = ""
@@ -34,6 +34,18 @@ final class LocalUserModel: Object {
             userId: user.userId,
             classId: user.classId,
             phoneNumber: user.phoneNumber
+        )
+    }
+    
+    convenience init(teacher: ResponseUserBaseModel) {
+        self.init(
+            role: .teacher,
+            name: teacher.name,
+            surname: teacher.surname, 
+            schoolId: teacher.schoolId, 
+            userId: teacher.userId,
+            classId: teacher.classId,
+            phoneNumber: teacher.phoneNumber
         )
     }
     

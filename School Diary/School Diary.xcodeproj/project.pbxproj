@@ -13,6 +13,20 @@
 		706538132AD13AA20009163A /* SignPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706538122AD13AA20009163A /* SignPresenter.swift */; };
 		706538162AD13AD40009163A /* SchoolDiaryUIComponents in Resources */ = {isa = PBXBuildFile; fileRef = 706538152AD13AD40009163A /* SchoolDiaryUIComponents */; };
 		706538192AD13AE10009163A /* SchoolDiaryUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 706538182AD13AE10009163A /* SchoolDiaryUIComponents */; };
+		707FFB032B1137CD0079B3CF /* ResponseUserBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB022B1137CD0079B3CF /* ResponseUserBaseModel.swift */; };
+		707FFB072B1138400079B3CF /* ResponseTeacherInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB062B1138400079B3CF /* ResponseTeacherInfoModel.swift */; };
+		707FFB092B1138DA0079B3CF /* PupilTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB082B1138DA0079B3CF /* PupilTabBarController.swift */; };
+		707FFB0C2B1139180079B3CF /* PupilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB0B2B1139180079B3CF /* PupilViewController.swift */; };
+		707FFB0E2B113ADD0079B3CF /* LocalTeacherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB0D2B113ADD0079B3CF /* LocalTeacherModel.swift */; };
+		707FFB102B113CE70079B3CF /* PupilPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB0F2B113CE70079B3CF /* PupilPresenter.swift */; };
+		707FFB132B11400A0079B3CF /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB122B11400A0079B3CF /* TimetableViewController.swift */; };
+		707FFB172B11436A0079B3CF /* TimetableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB162B11436A0079B3CF /* TimetableCollectionViewCell.swift */; };
+		707FFB192B1144880079B3CF /* UICollectionViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB182B1144880079B3CF /* UICollectionViewCell+Ext.swift */; };
+		707FFB1B2B1144970079B3CF /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB1A2B1144970079B3CF /* UICollectionView+Ext.swift */; };
+		707FFB1D2B1145210079B3CF /* TimetableDaysType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB1C2B1145210079B3CF /* TimetableDaysType.swift */; };
+		707FFB1F2B1145F90079B3CF /* TimetablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB1E2B1145F90079B3CF /* TimetablePresenter.swift */; };
+		707FFB222B1147F50079B3CF /* WeekDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB212B1147F50079B3CF /* WeekDaysView.swift */; };
+		707FFB242B114B070079B3CF /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB232B114B070079B3CF /* Date+Ext.swift */; };
 		7088C0FB2AD1407D004D9A50 /* LuckiestGuy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7088C0FA2AD14036004D9A50 /* LuckiestGuy-Regular.ttf */; };
 		7088C0FF2AD140BD004D9A50 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7088C0FE2AD140BD004D9A50 /* UIFont+Ext.swift */; };
 		7088C1022AD143B2004D9A50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7088C1012AD143B2004D9A50 /* Constants.swift */; };
@@ -53,6 +67,20 @@
 		706538102AD13A9B0009163A /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		706538122AD13AA20009163A /* SignPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPresenter.swift; sourceTree = "<group>"; };
 		706538152AD13AD40009163A /* SchoolDiaryUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SchoolDiaryUIComponents; sourceTree = "<group>"; };
+		707FFB022B1137CD0079B3CF /* ResponseUserBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUserBaseModel.swift; sourceTree = "<group>"; };
+		707FFB062B1138400079B3CF /* ResponseTeacherInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTeacherInfoModel.swift; sourceTree = "<group>"; };
+		707FFB082B1138DA0079B3CF /* PupilTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilTabBarController.swift; sourceTree = "<group>"; };
+		707FFB0B2B1139180079B3CF /* PupilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilViewController.swift; sourceTree = "<group>"; };
+		707FFB0D2B113ADD0079B3CF /* LocalTeacherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTeacherModel.swift; sourceTree = "<group>"; };
+		707FFB0F2B113CE70079B3CF /* PupilPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilPresenter.swift; sourceTree = "<group>"; };
+		707FFB122B11400A0079B3CF /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
+		707FFB162B11436A0079B3CF /* TimetableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCollectionViewCell.swift; sourceTree = "<group>"; };
+		707FFB182B1144880079B3CF /* UICollectionViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Ext.swift"; sourceTree = "<group>"; };
+		707FFB1A2B1144970079B3CF /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
+		707FFB1C2B1145210079B3CF /* TimetableDaysType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableDaysType.swift; sourceTree = "<group>"; };
+		707FFB1E2B1145F90079B3CF /* TimetablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetablePresenter.swift; sourceTree = "<group>"; };
+		707FFB212B1147F50079B3CF /* WeekDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysView.swift; sourceTree = "<group>"; };
+		707FFB232B114B070079B3CF /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		7088C0FA2AD14036004D9A50 /* LuckiestGuy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LuckiestGuy-Regular.ttf"; path = "../../../../../../../Downloads/Luckiest_Guy/LuckiestGuy-Regular.ttf"; sourceTree = "<group>"; };
 		7088C0FE2AD140BD004D9A50 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		7088C1012AD143B2004D9A50 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -108,8 +136,9 @@
 		7065380D2AD13A820009163A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				707FFB142B1143590079B3CF /* CollectionViewCells */,
 				70DB3A7D2AF7E809003B3E3F /* TabBarControllers */,
-				70DB3A7A2AF7D73E003B3E3F /* TableViewCell */,
+				70DB3A7A2AF7D73E003B3E3F /* TableViewCells */,
 				70DB3A6E2AF7CBE9003B3E3F /* Views */,
 				7065380E2AD13A880009163A /* ViewControllers */,
 			);
@@ -119,6 +148,8 @@
 		7065380E2AD13A880009163A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				707FFB112B1140020079B3CF /* TimetableViewController */,
+				707FFB0A2B11390D0079B3CF /* PupilViewController */,
 				70DB3A802AF7E885003B3E3F /* TeacherViewController */,
 				70DB3A742AF7D390003B3E3F /* SettingsViewController */,
 				70DB3A6B2AF7CBC5003B3E3F /* UserViewController */,
@@ -145,6 +176,48 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		707FFB0A2B11390D0079B3CF /* PupilViewController */ = {
+			isa = PBXGroup;
+			children = (
+				707FFB0B2B1139180079B3CF /* PupilViewController.swift */,
+				707FFB0F2B113CE70079B3CF /* PupilPresenter.swift */,
+			);
+			path = PupilViewController;
+			sourceTree = "<group>";
+		};
+		707FFB112B1140020079B3CF /* TimetableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				707FFB122B11400A0079B3CF /* TimetableViewController.swift */,
+				707FFB1E2B1145F90079B3CF /* TimetablePresenter.swift */,
+			);
+			path = TimetableViewController;
+			sourceTree = "<group>";
+		};
+		707FFB142B1143590079B3CF /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				707FFB152B1143630079B3CF /* TimetableCollectionViewCell */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		707FFB152B1143630079B3CF /* TimetableCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				707FFB162B11436A0079B3CF /* TimetableCollectionViewCell.swift */,
+			);
+			path = TimetableCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		707FFB202B1147E60079B3CF /* WeekDaysView */ = {
+			isa = PBXGroup;
+			children = (
+				707FFB212B1147F50079B3CF /* WeekDaysView.swift */,
+			);
+			path = WeekDaysView;
+			sourceTree = "<group>";
+		};
 		7088C0F92AD13F1B004D9A50 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				7088C0FD2AD140B7004D9A50 /* UIKit+Ext */,
+				707FFB232B114B070079B3CF /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -166,6 +240,8 @@
 			children = (
 				7088C0FE2AD140BD004D9A50 /* UIFont+Ext.swift */,
 				70DB3A722AF7D20D003B3E3F /* UIViewController+Ext.swift */,
+				707FFB182B1144880079B3CF /* UICollectionViewCell+Ext.swift */,
+				707FFB1A2B1144970079B3CF /* UICollectionView+Ext.swift */,
 			);
 			path = "UIKit+Ext";
 			sourceTree = "<group>";
@@ -202,6 +278,8 @@
 				70C0BED32AF7BAFB0057D6F3 /* ResponseSignInModel.swift */,
 				70C0BED52AF7BB3C0057D6F3 /* ResponseUserModel.swift */,
 				70C0BED72AF7BB730057D6F3 /* ResponseAccessTokenModel.swift */,
+				707FFB022B1137CD0079B3CF /* ResponseUserBaseModel.swift */,
+				707FFB062B1138400079B3CF /* ResponseTeacherInfoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				70DB3A522AF7C33B003B3E3F /* RoleType.swift */,
+				707FFB1C2B1145210079B3CF /* TimetableDaysType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -276,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				70DB3A612AF7C5D4003B3E3F /* LocalUserModel.swift */,
+				707FFB0D2B113ADD0079B3CF /* LocalTeacherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,6 +388,7 @@
 		70DB3A6E2AF7CBE9003B3E3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				707FFB202B1147E60079B3CF /* WeekDaysView */,
 				70DB3A832AF7EBC9003B3E3F /* TeacherInfoView */,
 				70DB3A792AF7D735003B3E3F /* UserSettingsTableHeaderView */,
 				70DB3A6F2AF7CBED003B3E3F /* UserInfoView */,
@@ -339,18 +420,19 @@
 			path = UserSettingsTableHeaderView;
 			sourceTree = "<group>";
 		};
-		70DB3A7A2AF7D73E003B3E3F /* TableViewCell */ = {
+		70DB3A7A2AF7D73E003B3E3F /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
 				70DB3A7B2AF7D749003B3E3F /* SettingsTableViewCell.swift */,
 			);
-			path = TableViewCell;
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		70DB3A7D2AF7E809003B3E3F /* TabBarControllers */ = {
 			isa = PBXGroup;
 			children = (
 				70DB3A7E2AF7E819003B3E3F /* TeacherTabBarController.swift */,
+				707FFB082B1138DA0079B3CF /* PupilTabBarController.swift */,
 			);
 			path = TabBarControllers;
 			sourceTree = "<group>";
@@ -480,25 +562,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				70C0BED82AF7BB730057D6F3 /* ResponseAccessTokenModel.swift in Sources */,
+				707FFB0C2B1139180079B3CF /* PupilViewController.swift in Sources */,
+				707FFB0E2B113ADD0079B3CF /* LocalTeacherModel.swift in Sources */,
+				707FFB102B113CE70079B3CF /* PupilPresenter.swift in Sources */,
 				70D0D2D52AD13A0F00CF5256 /* AppDelegate.swift in Sources */,
+				707FFB242B114B070079B3CF /* Date+Ext.swift in Sources */,
 				70DB3A652AF7C6B9003B3E3F /* BaseKeychainModel.swift in Sources */,
+				707FFB192B1144880079B3CF /* UICollectionViewCell+Ext.swift in Sources */,
 				70DB3A5C2AF7C576003B3E3F /* RealmManager.swift in Sources */,
 				7088C1072AD14897004D9A50 /* MainCoordinator.swift in Sources */,
 				70DB3A822AF7E88F003B3E3F /* TeacherViewController.swift in Sources */,
+				707FFB072B1138400079B3CF /* ResponseTeacherInfoModel.swift in Sources */,
 				70DB3A782AF7D5B6003B3E3F /* UserSettingsTableHeaderView.swift in Sources */,
+				707FFB172B11436A0079B3CF /* TimetableCollectionViewCell.swift in Sources */,
 				70DB3A732AF7D20D003B3E3F /* UIViewController+Ext.swift in Sources */,
 				70DB3A622AF7C5D4003B3E3F /* LocalUserModel.swift in Sources */,
 				70DB3A852AF7EBD2003B3E3F /* TeacherInfoView.swift in Sources */,
+				707FFB1F2B1145F90079B3CF /* TimetablePresenter.swift in Sources */,
 				7088C1092AD19484004D9A50 /* SignControllerType.swift in Sources */,
 				70DB3A6D2AF7CBCE003B3E3F /* UserViewController.swift in Sources */,
 				706538112AD13A9B0009163A /* SignViewController.swift in Sources */,
 				70DB3A712AF7CBF4003B3E3F /* UserInfoView.swift in Sources */,
+				707FFB1D2B1145210079B3CF /* TimetableDaysType.swift in Sources */,
 				70DB3A532AF7C33B003B3E3F /* RoleType.swift in Sources */,
+				707FFB092B1138DA0079B3CF /* PupilTabBarController.swift in Sources */,
 				70C0BED42AF7BAFB0057D6F3 /* ResponseSignInModel.swift in Sources */,
 				70C0BED12AF7B3D50057D6F3 /* SchoolsDiaryApi.swift in Sources */,
 				70D0D2D72AD13A0F00CF5256 /* SceneDelegate.swift in Sources */,
 				706538132AD13AA20009163A /* SignPresenter.swift in Sources */,
 				70DB3A682AF7C6EA003B3E3F /* Credentials.swift in Sources */,
+				707FFB222B1147F50079B3CF /* WeekDaysView.swift in Sources */,
 				70DB3A7C2AF7D749003B3E3F /* SettingsTableViewCell.swift in Sources */,
 				70C0BEDA2AF7BBAC0057D6F3 /* SchoolsDiaryProvider.swift in Sources */,
 				70DB3A6A2AF7C70C003B3E3F /* Account.swift in Sources */,
@@ -507,6 +600,9 @@
 				7088C0FF2AD140BD004D9A50 /* UIFont+Ext.swift in Sources */,
 				70DB3A7F2AF7E819003B3E3F /* TeacherTabBarController.swift in Sources */,
 				7088C1022AD143B2004D9A50 /* Constants.swift in Sources */,
+				707FFB032B1137CD0079B3CF /* ResponseUserBaseModel.swift in Sources */,
+				707FFB132B11400A0079B3CF /* TimetableViewController.swift in Sources */,
+				707FFB1B2B1144970079B3CF /* UICollectionView+Ext.swift in Sources */,
 				70DB3A762AF7D397003B3E3F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,4 +34,20 @@ final class SchoolsDiaryProvider: BaseRestApiProvider {
             }
         }
     }
+    
+    func teacherInfo(success: @escaping((ResponseUserBaseModel) -> ()), failure: (() -> ())? = nil) {
+        self.urlSession.dataTask(with: URLRequest(type: SchoolsDiaryApi.teacherInfo, shouldPrintLog: self.shouldPrintLog)) { response in
+            switch response {
+                case .success(let response):
+                    guard let teacherInfo = response.data?.map(to: ResponseTeacherInfoModel.self) else {
+                        failure?()
+                        return
+                    }
+                    
+                    success(teacherInfo.teacherInfo)
+                case .failure:
+                    failure?()
+            }
+        }
+    }
 }

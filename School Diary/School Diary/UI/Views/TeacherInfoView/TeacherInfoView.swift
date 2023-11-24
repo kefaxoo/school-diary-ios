@@ -27,8 +27,8 @@ final class TeacherInfoView: BaseUIView {
     private lazy var teacherNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
-        if let currentUser = RealmManager<LocalUserModel>().read().first {
-            label.text = currentUser.nameAndSurname
+        if let teacher = RealmManager<LocalTeacherModel>().read().first {
+            label.text = teacher.nameAndSurname
         }
         
         return label
@@ -45,6 +45,10 @@ final class TeacherInfoView: BaseUIView {
     
     convenience init() {
         self.init(frame: CGRect(origin: .zero, size: CGSize(width: 350, height: 86)))
+    }
+    
+    func updateTeacherInfo() {
+        self.teacherNameLabel.text = RealmManager<LocalTeacherModel>().read().first?.nameAndSurname
     }
 }
 
@@ -77,4 +81,9 @@ extension TeacherInfoView {
         
         userImageView.layer.cornerRadius = userImageView.frame.height / 2
     }
+}
+
+@available(iOS 17.0, *)
+#Preview {
+    return TeacherInfoView()
 }

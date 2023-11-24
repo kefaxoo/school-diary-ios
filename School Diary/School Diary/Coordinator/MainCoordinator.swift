@@ -22,7 +22,7 @@ final class MainCoordinator {
         
         switch currentUser.role {
             case .pupil:
-                break
+                return PupilTabBarController()
             case .teacher:
                 return TeacherTabBarController()
             default:
