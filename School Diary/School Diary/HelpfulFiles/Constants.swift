@@ -46,4 +46,8 @@ enum Constants {
 #endif
         return false
     }
+    
+    static var baseApiUrl: String {
+        return "http://localhost:8000/api"
+    }
 }

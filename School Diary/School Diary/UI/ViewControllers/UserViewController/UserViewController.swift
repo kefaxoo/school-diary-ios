@@ -16,7 +16,7 @@ class UserViewController: BaseUIViewController {
     
     private lazy var qrImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = Constants.Images.userExampleQR.image
+        imageView.setImage(from: "\(Constants.baseApiUrl)/user/qr", withHeader: SettingsManager.shared.account.accessToken)
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 16
         return imageView

@@ -24,11 +24,22 @@ final class TeacherTabBarController: UITabBarController {
     
     private func configureViewControllers() {
         let teacherVC = TeacherViewController().configureNavigationController(title: "Аккаунт учителя", preferesLargeTitles: false)
-        
         teacherVC.tabBarItem = UITabBarItem(title: "Профиль", image: Constants.Images.profileIcon.image, tag: 1)
         
+        let scannerVC = QRScannerViewController()
+        scannerVC.tabBarItem = UITabBarItem(title: "Сканнер", image: UIImage(systemName: "qrcode"), tag: 2)
+        
         self.viewControllers = [
-            teacherVC
+            teacherVC,
+            scannerVC
         ]
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item.tag == 2 {
+            MainCoordinator.shared.presentQRScanner()
+        } else {
+            super.tabBar(tabBar, didSelect: item)
+        }
     }
 }

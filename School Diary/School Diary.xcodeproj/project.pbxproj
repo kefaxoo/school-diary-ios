@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7065380A2AD13A700009163A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 706538092AD13A700009163A /* SnapKit */; };
-		7065380C2AD13A700009163A /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7065380B2AD13A700009163A /* SnapKit-Dynamic */; };
 		706538112AD13A9B0009163A /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706538102AD13A9B0009163A /* SignViewController.swift */; };
 		706538132AD13AA20009163A /* SignPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706538122AD13AA20009163A /* SignPresenter.swift */; };
 		706538162AD13AD40009163A /* SchoolDiaryUIComponents in Resources */ = {isa = PBXBuildFile; fileRef = 706538152AD13AD40009163A /* SchoolDiaryUIComponents */; };
 		706538192AD13AE10009163A /* SchoolDiaryUIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 706538182AD13AE10009163A /* SchoolDiaryUIComponents */; };
+		70672CAD2B12169400B33E6E /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70672CAC2B12169400B33E6E /* UIImageView+Ext.swift */; };
+		70672CB52B121AB200B33E6E /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70672CB42B121AB100B33E6E /* QRScannerViewController.swift */; };
+		70672CBF2B12248F00B33E6E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 70672CBE2B12248F00B33E6E /* SDWebImage */; };
+		70672CC12B12248F00B33E6E /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 70672CC02B12248F00B33E6E /* SDWebImageMapKit */; };
 		707FFB032B1137CD0079B3CF /* ResponseUserBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB022B1137CD0079B3CF /* ResponseUserBaseModel.swift */; };
 		707FFB072B1138400079B3CF /* ResponseTeacherInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB062B1138400079B3CF /* ResponseTeacherInfoModel.swift */; };
 		707FFB092B1138DA0079B3CF /* PupilTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707FFB082B1138DA0079B3CF /* PupilTabBarController.swift */; };
@@ -32,6 +34,7 @@
 		7088C1022AD143B2004D9A50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7088C1012AD143B2004D9A50 /* Constants.swift */; };
 		7088C1072AD14897004D9A50 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7088C1062AD14897004D9A50 /* MainCoordinator.swift */; };
 		7088C1092AD19484004D9A50 /* SignControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7088C1082AD19484004D9A50 /* SignControllerType.swift */; };
+		70BCE5492B123C01003D5FA4 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 70BCE5482B123C01003D5FA4 /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (Required, ); }; };
 		70C0BECF2AF7B3C80057D6F3 /* FriendlyURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 70C0BECE2AF7B3C80057D6F3 /* FriendlyURLSession */; };
 		70C0BED12AF7B3D50057D6F3 /* SchoolsDiaryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0BED02AF7B3D50057D6F3 /* SchoolsDiaryApi.swift */; };
 		70C0BED42AF7BAFB0057D6F3 /* ResponseSignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C0BED32AF7BAFB0057D6F3 /* ResponseSignInModel.swift */; };
@@ -61,12 +64,15 @@
 		70DB3A7F2AF7E819003B3E3F /* TeacherTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB3A7E2AF7E819003B3E3F /* TeacherTabBarController.swift */; };
 		70DB3A822AF7E88F003B3E3F /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB3A812AF7E88F003B3E3F /* TeacherViewController.swift */; };
 		70DB3A852AF7EBD2003B3E3F /* TeacherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB3A842AF7EBD2003B3E3F /* TeacherInfoView.swift */; };
+		70DFBF0C2B12295E001B145B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 70DFBF0B2B12295E001B145B /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		706538102AD13A9B0009163A /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		706538122AD13AA20009163A /* SignPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPresenter.swift; sourceTree = "<group>"; };
 		706538152AD13AD40009163A /* SchoolDiaryUIComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SchoolDiaryUIComponents; sourceTree = "<group>"; };
+		70672CAC2B12169400B33E6E /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		70672CB42B121AB100B33E6E /* QRScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		707FFB022B1137CD0079B3CF /* ResponseUserBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseUserBaseModel.swift; sourceTree = "<group>"; };
 		707FFB062B1138400079B3CF /* ResponseTeacherInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTeacherInfoModel.swift; sourceTree = "<group>"; };
 		707FFB082B1138DA0079B3CF /* PupilTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilTabBarController.swift; sourceTree = "<group>"; };
@@ -123,10 +129,12 @@
 			files = (
 				70DB3A592AF7C54E003B3E3F /* RealmSwift in Frameworks */,
 				706538192AD13AE10009163A /* SchoolDiaryUIComponents in Frameworks */,
-				7065380A2AD13A700009163A /* SnapKit in Frameworks */,
 				70C0BECF2AF7B3C80057D6F3 /* FriendlyURLSession in Frameworks */,
-				7065380C2AD13A700009163A /* SnapKit-Dynamic in Frameworks */,
+				70BCE5492B123C01003D5FA4 /* SnapKit-Dynamic in Frameworks */,
+				70DFBF0C2B12295E001B145B /* SnapKit in Frameworks */,
 				70DB3A572AF7C54E003B3E3F /* Realm in Frameworks */,
+				70672CC12B12248F00B33E6E /* SDWebImageMapKit in Frameworks */,
+				70672CBF2B12248F00B33E6E /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +156,7 @@
 		7065380E2AD13A880009163A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				70672CB32B121A8800B33E6E /* QRScannerViewController */,
 				707FFB112B1140020079B3CF /* TimetableViewController */,
 				707FFB0A2B11390D0079B3CF /* PupilViewController */,
 				70DB3A802AF7E885003B3E3F /* TeacherViewController */,
@@ -174,6 +183,14 @@
 				706538152AD13AD40009163A /* SchoolDiaryUIComponents */,
 			);
 			path = Packages;
+			sourceTree = "<group>";
+		};
+		70672CB32B121A8800B33E6E /* QRScannerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70672CB42B121AB100B33E6E /* QRScannerViewController.swift */,
+			);
+			path = QRScannerViewController;
 			sourceTree = "<group>";
 		};
 		707FFB0A2B11390D0079B3CF /* PupilViewController */ = {
@@ -242,6 +259,7 @@
 				70DB3A722AF7D20D003B3E3F /* UIViewController+Ext.swift */,
 				707FFB182B1144880079B3CF /* UICollectionViewCell+Ext.swift */,
 				707FFB1A2B1144970079B3CF /* UICollectionView+Ext.swift */,
+				70672CAC2B12169400B33E6E /* UIImageView+Ext.swift */,
 			);
 			path = "UIKit+Ext";
 			sourceTree = "<group>";
@@ -289,6 +307,7 @@
 			children = (
 				70D0D2D32AD13A0F00CF5256 /* School Diary */,
 				70D0D2D22AD13A0F00CF5256 /* Products */,
+				70DFBF0A2B12295E001B145B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -453,6 +472,13 @@
 			path = TeacherInfoView;
 			sourceTree = "<group>";
 		};
+		70DFBF0A2B12295E001B145B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,12 +497,14 @@
 			);
 			name = "School Diary";
 			packageProductDependencies = (
-				706538092AD13A700009163A /* SnapKit */,
-				7065380B2AD13A700009163A /* SnapKit-Dynamic */,
 				706538182AD13AE10009163A /* SchoolDiaryUIComponents */,
 				70C0BECE2AF7B3C80057D6F3 /* FriendlyURLSession */,
 				70DB3A562AF7C54E003B3E3F /* Realm */,
 				70DB3A582AF7C54E003B3E3F /* RealmSwift */,
+				70672CBE2B12248F00B33E6E /* SDWebImage */,
+				70672CC02B12248F00B33E6E /* SDWebImageMapKit */,
+				70DFBF0B2B12295E001B145B /* SnapKit */,
+				70BCE5482B123C01003D5FA4 /* SnapKit-Dynamic */,
 			);
 			productName = "School Diary";
 			productReference = 70D0D2D12AD13A0F00CF5256 /* School Diary.app */;
@@ -507,10 +535,11 @@
 			);
 			mainGroup = 70D0D2C82AD13A0F00CF5256;
 			packageReferences = (
-				706538082AD13A700009163A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				706538172AD13AE10009163A /* XCLocalSwiftPackageReference "School Diary/Packages/SchoolDiaryUIComponents" */,
 				70C0BECD2AF7B3C80057D6F3 /* XCRemoteSwiftPackageReference "friendly-urlsession" */,
 				70DB3A552AF7C54E003B3E3F /* XCRemoteSwiftPackageReference "realm-swift" */,
+				70672CBD2B12248F00B33E6E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				70672CCC2B1226B500B33E6E /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 70D0D2D22AD13A0F00CF5256 /* Products */;
 			projectDirPath = "";
@@ -561,10 +590,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70672CAD2B12169400B33E6E /* UIImageView+Ext.swift in Sources */,
 				70C0BED82AF7BB730057D6F3 /* ResponseAccessTokenModel.swift in Sources */,
 				707FFB0C2B1139180079B3CF /* PupilViewController.swift in Sources */,
 				707FFB0E2B113ADD0079B3CF /* LocalTeacherModel.swift in Sources */,
 				707FFB102B113CE70079B3CF /* PupilPresenter.swift in Sources */,
+				70672CB52B121AB200B33E6E /* QRScannerViewController.swift in Sources */,
 				70D0D2D52AD13A0F00CF5256 /* AppDelegate.swift in Sources */,
 				707FFB242B114B070079B3CF /* Date+Ext.swift in Sources */,
 				70DB3A652AF7C6B9003B3E3F /* BaseKeychainModel.swift in Sources */,
@@ -838,7 +869,15 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		706538082AD13A700009163A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		70672CBD2B12248F00B33E6E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.18.5;
+			};
+		};
+		70672CCC2B1226B500B33E6E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -865,19 +904,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		706538092AD13A700009163A /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 706538082AD13A700009163A /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		7065380B2AD13A700009163A /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 706538082AD13A700009163A /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
 		706538182AD13AE10009163A /* SchoolDiaryUIComponents */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SchoolDiaryUIComponents;
+		};
+		70672CBE2B12248F00B33E6E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70672CBD2B12248F00B33E6E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		70672CC02B12248F00B33E6E /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70672CBD2B12248F00B33E6E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		70BCE5482B123C01003D5FA4 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70672CCC2B1226B500B33E6E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
 		};
 		70C0BECE2AF7B3C80057D6F3 /* FriendlyURLSession */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -893,6 +937,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 70DB3A552AF7C54E003B3E3F /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		70DFBF0B2B12295E001B145B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70672CCC2B1226B500B33E6E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

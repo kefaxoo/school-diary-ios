@@ -15,7 +15,7 @@ enum SchoolsDiaryApi {
 
 extension SchoolsDiaryApi: BaseRestApiEnum {
     var baseUrl: String {
-        return "http://localhost:8000/api"
+        return "\(Constants.baseApiUrl)"
 //        return "https://schools-diary-api.fly.dev/api"
     }
     

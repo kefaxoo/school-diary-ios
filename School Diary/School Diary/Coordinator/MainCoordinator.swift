@@ -8,28 +8,32 @@
 import UIKit
 import SchoolDiaryUIComponents
 
-final class MainCoordinator {
+final class MainCoordinator: NSObject {
     static let shared = MainCoordinator()
     
     var window: UIWindow?
     
-    fileprivate init() {}
+    fileprivate override init() {
+        super.init()
+    }
     
     let signVC = SignViewController().createNavigationController
     
     var tabBar: UITabBarController? {
         guard let currentUser = RealmManager<LocalUserModel>().read().first else { return nil }
         
+        let tabBar: UITabBarController?
         switch currentUser.role {
             case .pupil:
-                return PupilTabBarController()
+                tabBar = PupilTabBarController()
             case .teacher:
-                return TeacherTabBarController()
+                tabBar = TeacherTabBarController()
             default:
-                break
+                tabBar = nil
         }
         
-        return nil
+        tabBar?.delegate = self
+        return tabBar
     }
     
     var initialController: UIViewController? {
@@ -98,5 +102,16 @@ extension MainCoordinator {
     
     func makeSignVCAsRoot() {
         self.makeRootVC(SignViewController().createNavigationController)
+    }
+    
+    func presentQRScanner() {
+        self.present(QRScannerViewController())
+    }
+}
+
+// MARK: - UITabBarControllerDelegate
+extension MainCoordinator: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return !(viewController is QRScannerViewController)
     }
 }
