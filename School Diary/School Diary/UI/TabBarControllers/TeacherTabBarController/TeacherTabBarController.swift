@@ -29,17 +29,19 @@ final class TeacherTabBarController: UITabBarController {
         let scannerVC = QRScannerViewController()
         scannerVC.tabBarItem = UITabBarItem(title: "Сканнер", image: UIImage(systemName: "qrcode"), tag: 2)
         
+        let timetableVC = TimetableViewController().configureNavigationController(preferesLargeTitles: false)
+        timetableVC.tabBarItem = UITabBarItem(title: "Расписание", image: Constants.Images.timetableIcon.image, tag: 3)
+        
         self.viewControllers = [
             teacherVC,
-            scannerVC
+            scannerVC,
+            timetableVC
         ]
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.tag == 2 {
-            MainCoordinator.shared.presentQRScanner()
-        } else {
-            super.tabBar(tabBar, didSelect: item)
-        }
+        guard item.tag == 2 else { return }
+        
+        MainCoordinator.shared.presentQRScanner()
     }
 }

@@ -2,15 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSAllowsLocalNetworking</key>
-		<true/>
-	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Приложение запрашивает доступ к камере, чтобы сканировать QR коды учеников</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SFMono-Regular.otf</string>
 		<string>LuckiestGuy-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

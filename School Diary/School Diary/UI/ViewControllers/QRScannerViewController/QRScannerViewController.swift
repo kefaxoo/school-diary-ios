@@ -29,14 +29,25 @@ final class QRScannerViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupCapture()
+        AVCaptureDevice.requestAccess(for: .video) { [weak self] isAccessGranted in
+            DispatchQueue.main.async {
+                guard isAccessGranted else {
+                    self?.dismiss(animated: true)
+                    return
+                }
+                
+                self?.setupCapture()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard captureSession.isRunning else { return }
         
-        captureSession.startRunning()
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.captureSession.startRunning()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,7 +78,9 @@ final class QRScannerViewController: BaseUIViewController {
         metadataOutput.metadataObjectTypes = [.qr]
         
         self.view.layer.addSublayer(previewLayer)
-        captureSession.startRunning()
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            self?.captureSession.startRunning()
+        }
     }
 }
 
@@ -85,9 +98,21 @@ extension QRScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
         captureSession.stopRunning()
         guard let metadataObjects = metadataObjects.first,
               let readableObject = metadataObjects as? AVMetadataMachineReadableCodeObject,
-              let stringValue = readableObject.stringValue
+              let stringValue = readableObject.stringValue?.replacingOccurrences(of: "'", with: "\""),
+              let data = stringValue.data(using: .utf8),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let pupilId = json["userId"] as? Int
         else { return }
         
-        print(stringValue)
+        self.dismiss(animated: true) {
+            let currentVC = MainCoordinator.shared.currentController as? BaseUIViewController
+            currentVC?.spinner(isShow: true)
+            SchoolsDiaryProvider.shared.pupilInfo(id: pupilId) { user in
+                currentVC?.spinner(isShow: false)
+                MainCoordinator.shared.pushUserViewController(userInfo: user)
+            } failure: {
+                currentVC?.spinner(isShow: false)
+            }
+        }
     }
 }

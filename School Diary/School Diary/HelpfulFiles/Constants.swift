@@ -17,6 +17,9 @@ enum Constants {
         case profileIcon
         case menuNavigationButtonIcon
         case timetableIcon
+        case leftBottomNavigationButtonIcon
+        case rightBottomNavigationButtonIcon
+        case marksIcon
         
         var image: UIImage? {
             switch self {
@@ -36,6 +39,12 @@ enum Constants {
                     return UIImage(named: "MenuNavigationButtonIcon")
                 case .timetableIcon:
                     return UIImage(named: "TimetableTabBarIcon")
+                case .leftBottomNavigationButtonIcon:
+                    return UIImage(named: "LeftBottomNavigationButtonIcon")
+                case .rightBottomNavigationButtonIcon:
+                    return UIImage(named: "RightBottomNavigationButtonIcon")
+                case .marksIcon:
+                    return UIImage(systemName: "list.number")
             }
         }
     }
@@ -48,6 +57,6 @@ enum Constants {
     }
     
     static var baseApiUrl: String {
-        return "http://localhost:8000/api"
+        return "http://192.168.0.102:8000/api"
     }
 }

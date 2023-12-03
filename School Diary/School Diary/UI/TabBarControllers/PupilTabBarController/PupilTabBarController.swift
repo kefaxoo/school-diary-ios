@@ -29,9 +29,13 @@ final class PupilTabBarController: UITabBarController {
         let timetableVC = TimetableViewController().configureNavigationController(preferesLargeTitles: false)
         timetableVC.tabBarItem = UITabBarItem(title: "Расписание", image: Constants.Images.timetableIcon.image, tag: 2)
         
+        let marksVC = MarksViewController().configureNavigationController(title: "Отметки", preferesLargeTitles: false)
+        marksVC.tabBarItem = UITabBarItem(title: "Отметки", image: Constants.Images.marksIcon.image, tag: 3)
+        
         self.viewControllers = [
             pupilVC,
-            timetableVC
+            timetableVC,
+            marksVC
         ]
     }
 }

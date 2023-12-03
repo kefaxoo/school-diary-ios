@@ -40,7 +40,24 @@ final class MainCoordinator: NSObject {
         if SettingsManager.shared.account.accessToken?.isEmpty ?? true {
             return self.signVC
         } else {
-            return self.tabBar
+            let account = SettingsManager.shared.account
+            if account.shouldRefreshToken {
+                SchoolsDiaryProvider.shared.signIn(email: account.email, password: account.password ?? "") { [weak self] user in
+                    let localUser = LocalUserModel(user: user)
+                    let realmManager = RealmManager<LocalUserModel>()
+                    realmManager.read().forEach({ realmManager.delete(object: $0) })
+                    realmManager.write(object: localUser)
+                    SettingsManager.shared.account.updateAccessToken(user.accessToken.accessToken, expireAt: user.accessToken.expireAt)
+                    self?.makeTabBarAsRoot()
+                } failure: { [weak self] in
+                    _ = SettingsManager.shared.signOut()
+                    self?.makeSignVCAsRoot()
+                }
+                
+                return nil
+            } else {
+                return self.tabBar
+            }
         }
     }
     
@@ -106,6 +123,26 @@ extension MainCoordinator {
     
     func presentQRScanner() {
         self.present(QRScannerViewController())
+    }
+    
+    func pushUserViewController(userInfo: ResponseUserBaseModel) {
+        self.pushViewController(UserViewController(controllerType: .pupilInfo, userInfo: userInfo))
+    }
+    
+    func pushScheduleViewController(dayType: TimetableDaysType, day: Date, isCurrentWeek: Bool) {
+        self.pushViewController(ScheduleViewController(dayType: dayType, day: day, isCurrentWeek: isCurrentWeek))
+    }
+    
+    func pushLessonInfoViewController(lesson: ResponseLessonModel, day: Date, dateType: TimetableDaysType) {
+        self.pushViewController(LessonInfoViewController(with: lesson, day: day, dateType: dateType))
+    }
+    
+    func pushLessonMarksViewController(lesson: ResponseLessonModel, day: Date, dateType: TimetableDaysType) {
+        self.pushViewController(LessonMarksViewController(lesson: lesson, date: day, type: dateType))
+    }
+    
+    func pushChooseMarkViewController(pupil: ResponseShortUserInfoModel, completion: @escaping ChooseMarkCompletion) {
+        self.pushViewController(ChooseMarkViewController(withPupil: pupil, completion: completion))
     }
 }
 
