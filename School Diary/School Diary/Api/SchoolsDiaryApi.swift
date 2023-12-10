@@ -17,6 +17,7 @@ enum SchoolsDiaryApi {
     case getPupilsAtLesson(schoolId: Int, classId: Int, subjectId: Int, lessonDate: Date)
     case addMark(schoolId: Int, classId: Int, subjectId: Int, pupilId: Int, lessonDate: Date, mark: Int)
     case termMarks
+    case teacherPupils
 }
 
 extension SchoolsDiaryApi: BaseRestApiEnum {
@@ -43,6 +44,8 @@ extension SchoolsDiaryApi: BaseRestApiEnum {
                 return "/mark"
             case .termMarks:
                 return "/pupil/marks/term"
+            case .teacherPupils:
+                return "/teacher/pupils"
         }
     }
     

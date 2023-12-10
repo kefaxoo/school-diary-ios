@@ -144,6 +144,10 @@ extension MainCoordinator {
     func pushChooseMarkViewController(pupil: ResponseShortUserInfoModel, completion: @escaping ChooseMarkCompletion) {
         self.pushViewController(ChooseMarkViewController(withPupil: pupil, completion: completion))
     }
+    
+    func pushTeacherClassViewController() {
+        self.pushViewController(TeacherPupilsViewController())
+    }
 }
 
 // MARK: - UITabBarControllerDelegate

@@ -20,6 +20,10 @@
 		700C60282B17C73600261FB4 /* ResponseHometaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C60272B17C73600261FB4 /* ResponseHometaskModel.swift */; };
 		700C602B2B17F3EF00261FB4 /* LessonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C602A2B17F3EF00261FB4 /* LessonInfoViewController.swift */; };
 		7054A4B02B124BAE00F39B6D /* ResponseBaseContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7054A4AF2B124BAE00F39B6D /* ResponseBaseContentModel.swift */; };
+		708892D72B262D0200E6B3BE /* ResponseTeacherPupilModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708892D62B262D0200E6B3BE /* ResponseTeacherPupilModel.swift */; };
+		708892D92B262D1C00E6B3BE /* ResponseTeacherPupilsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708892D82B262D1C00E6B3BE /* ResponseTeacherPupilsModel.swift */; };
+		708892DC2B262F4A00E6B3BE /* TeacherPupilsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708892DB2B262F4A00E6B3BE /* TeacherPupilsViewController.swift */; };
+		708892DF2B262F8800E6B3BE /* PupilTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708892DE2B262F8800E6B3BE /* PupilTableViewCell.swift */; };
 		70A72C802B1C9CFA00771881 /* LessonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A72C7F2B1C9CFA00771881 /* LessonType.swift */; };
 		70A72C822B1CA12F00771881 /* ResponseShortUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A72C812B1CA12F00771881 /* ResponseShortUserInfoModel.swift */; };
 		70A72C842B1CA17600771881 /* ResponsePupilsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A72C832B1CA17600771881 /* ResponsePupilsModel.swift */; };
@@ -105,6 +109,10 @@
 		700C60272B17C73600261FB4 /* ResponseHometaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseHometaskModel.swift; sourceTree = "<group>"; };
 		700C602A2B17F3EF00261FB4 /* LessonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoViewController.swift; sourceTree = "<group>"; };
 		7054A4AF2B124BAE00F39B6D /* ResponseBaseContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseBaseContentModel.swift; sourceTree = "<group>"; };
+		708892D62B262D0200E6B3BE /* ResponseTeacherPupilModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTeacherPupilModel.swift; sourceTree = "<group>"; };
+		708892D82B262D1C00E6B3BE /* ResponseTeacherPupilsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTeacherPupilsModel.swift; sourceTree = "<group>"; };
+		708892DB2B262F4A00E6B3BE /* TeacherPupilsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherPupilsViewController.swift; sourceTree = "<group>"; };
+		708892DE2B262F8800E6B3BE /* PupilTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PupilTableViewCell.swift; sourceTree = "<group>"; };
 		70A72C7F2B1C9CFA00771881 /* LessonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonType.swift; sourceTree = "<group>"; };
 		70A72C812B1CA12F00771881 /* ResponseShortUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseShortUserInfoModel.swift; sourceTree = "<group>"; };
 		70A72C832B1CA17600771881 /* ResponsePupilsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsePupilsModel.swift; sourceTree = "<group>"; };
@@ -221,6 +229,22 @@
 				700C602A2B17F3EF00261FB4 /* LessonInfoViewController.swift */,
 			);
 			path = LessonInfoViewController;
+			sourceTree = "<group>";
+		};
+		708892DA2B262F3C00E6B3BE /* TeacherPupilsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				708892DB2B262F4A00E6B3BE /* TeacherPupilsViewController.swift */,
+			);
+			path = TeacherPupilsViewController;
+			sourceTree = "<group>";
+		};
+		708892DD2B262F7E00E6B3BE /* PupilTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				708892DE2B262F8800E6B3BE /* PupilTableViewCell.swift */,
+			);
+			path = PupilTableViewCell;
 			sourceTree = "<group>";
 		};
 		70A72C852B1CB2DB00771881 /* ChooseMarkViewController */ = {
@@ -379,6 +403,8 @@
 				70A72C832B1CA17600771881 /* ResponsePupilsModel.swift */,
 				70A72C8E2B1CCA9800771881 /* ResponseSubjectMarkModel.swift */,
 				70A72C902B1CCAEA00771881 /* ResponseSubjectMarksModel.swift */,
+				708892D62B262D0200E6B3BE /* ResponseTeacherPupilModel.swift */,
+				708892D82B262D1C00E6B3BE /* ResponseTeacherPupilsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -477,6 +503,7 @@
 		70BCE5832B123DF2003D5FA4 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				708892DD2B262F7E00E6B3BE /* PupilTableViewCell */,
 				70A72C992B1CE66300771881 /* SubjectMarksTableViewCell */,
 				70A72C982B1CE64000771881 /* PupilMarkTableViewCell */,
 				70A72C972B1CE63500771881 /* ScheduleTableViewCell */,
@@ -505,6 +532,7 @@
 		70BCE5882B123DF2003D5FA4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				708892DA2B262F3C00E6B3BE /* TeacherPupilsViewController */,
 				70A72C922B1CE38800771881 /* MarksViewController */,
 				70A72C852B1CB2DB00771881 /* ChooseMarkViewController */,
 				700BE8BB2B1C8FA50082E05C /* LessonMarksViewController */,
@@ -777,6 +805,7 @@
 				70BCE5AD2B123DF2003D5FA4 /* QRScannerViewController.swift in Sources */,
 				70BCE5702B123D6D003D5FA4 /* BaseKeychainModel.swift in Sources */,
 				70BCE5592B123D2F003D5FA4 /* ResponseAccessTokenModel.swift in Sources */,
+				708892D92B262D1C00E6B3BE /* ResponseTeacherPupilsModel.swift in Sources */,
 				70BCE55D2B123D2F003D5FA4 /* SchoolsDiaryApi.swift in Sources */,
 				70BCE5B72B123DF2003D5FA4 /* UserSettingsTableHeaderView.swift in Sources */,
 				70BCE57B2B123DAD003D5FA4 /* MainCoordinator.swift in Sources */,
@@ -785,6 +814,7 @@
 				70BCE5772B123D7D003D5FA4 /* LocalUserModel.swift in Sources */,
 				70A72C9E2B1CE75800771881 /* MarksTableHeaderView.swift in Sources */,
 				700C5D802B12A91E00A6F445 /* ScheduleTableViewCell.swift in Sources */,
+				708892DF2B262F8800E6B3BE /* PupilTableViewCell.swift in Sources */,
 				70A72C872B1CB2EC00771881 /* ChooseMarkViewController.swift in Sources */,
 				70BCE56C2B123D62003D5FA4 /* Account.swift in Sources */,
 				70BCE5AE2B123DF2003D5FA4 /* TimetablePresenter.swift in Sources */,
@@ -801,6 +831,7 @@
 				70BCE5A82B123DF2003D5FA4 /* TimetableCollectionViewCell.swift in Sources */,
 				700C602B2B17F3EF00261FB4 /* LessonInfoViewController.swift in Sources */,
 				70BCE5B52B123DF2003D5FA4 /* TeacherInfoView.swift in Sources */,
+				708892D72B262D0200E6B3BE /* ResponseTeacherPupilModel.swift in Sources */,
 				70BCE5C52B123DFC003D5FA4 /* UIFont+Ext.swift in Sources */,
 				70BCE5B32B123DF2003D5FA4 /* UserViewController.swift in Sources */,
 				70BCE5762B123D7D003D5FA4 /* RealmManager.swift in Sources */,
@@ -825,6 +856,7 @@
 				70A72C8F2B1CCA9800771881 /* ResponseSubjectMarkModel.swift in Sources */,
 				700C5D792B1292CC00A6F445 /* ResponseLessonModel.swift in Sources */,
 				70BCE5A72B123DF2003D5FA4 /* SettingsTableViewCell.swift in Sources */,
+				708892DC2B262F4A00E6B3BE /* TeacherPupilsViewController.swift in Sources */,
 				70BCE5202B123A07003D5FA4 /* AppDelegate.swift in Sources */,
 				70BCE5C42B123DFC003D5FA4 /* UICollectionView+Ext.swift in Sources */,
 				700C60282B17C73600261FB4 /* ResponseHometaskModel.swift in Sources */,

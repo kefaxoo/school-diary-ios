@@ -14,6 +14,7 @@ final class TeacherViewController: UserViewController {
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 10
         button.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
+        button.addTarget(self, action: #selector(classButtonDidTap), for: .touchUpInside)
         return button
     }()
     
@@ -40,5 +41,12 @@ extension TeacherViewController {
             make.leading.trailing.equalToSuperview().inset(UIEdgeInsets(horizontal: 131))
             make.height.equalTo(48)
         }
+    }
+}
+
+// MARK: - Actions
+fileprivate extension TeacherViewController {
+    @objc func classButtonDidTap(_ sender: UIButton) {
+        MainCoordinator.shared.pushTeacherClassViewController()
     }
 }

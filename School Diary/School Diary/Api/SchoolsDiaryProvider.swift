@@ -172,4 +172,22 @@ final class SchoolsDiaryProvider: BaseRestApiProvider {
             }
         }
     }
+    
+    func teacherPupils(success: @escaping(([ResponseTeacherPupilModel]) -> ()), failure: @escaping(() -> ())) {
+        self.urlSession.dataTask(with: URLRequest(type: SchoolsDiaryApi.teacherPupils, shouldPrintLog: self.shouldPrintLog)) { response in
+            switch response {
+                case .success(let response):
+                    guard let content = response.data?.map(to: ResponseBaseContentModel<ResponseTeacherPupilsModel>.self) else {
+                        failure()
+                        return
+                    }
+                    
+                    success(content.content.pupils.sorted { lhs, rhs in
+                        return lhs.surname == rhs.surname ? lhs.name < rhs.name : lhs.surname < rhs.surname
+                    })
+                case .failure:
+                    failure()
+            }
+        }
+    }
 }

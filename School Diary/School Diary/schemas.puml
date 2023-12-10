@@ -1,0 +1,1126 @@
+@startuml
+
+' Swift Classes
+protocol Decodable << Swift Protocol >> {}
+protocol NSObject << Objective-C Protocol >> {}
+protocol UITabBarControllerDelegate << Objective-C Protocol >> {
+    +tabBarController(_:shouldSelect:)
+}
+
+class Int << (S, SkyBlue) Swift Struct >> {}
+protocol CaseIterable << Swift Protocol >> {}
+class String << (S, SkyBlue) Swift Struct >> {}
+
+class UITableViewCell << UIKit Class >> {
+    +{static} id: String
+    +init(style:reuseIdentifier:)
+    +init(coder:)
+    +prepareForReuse()
+}
+
+class UITextField << UIKit Class >> {
+    +init(placeholder:)
+    +init(frame:)
+    +init(coder:)
+    +init(placeholder:)
+    +textRect(forBounds:)
+    +editingRect(forBounds:)
+    +placeholderRect(forBounds:)
+}
+
+class UIView << UIKit Class >> {
+    +init(frame:)
+    +init(coder:)
+}
+
+class AnyObject << (T, Yellow) UIKit Typealias >> {}
+class UITextView << UIKit Class >> {
+    +init(coder:)
+    +init(frame:textContainer:)
+}
+
+protocol UITextViewDelegate << UIKit Protocol >> {
+    +textViewDidBeginEditing(_:)
+    +textViewDidEndEditing(_:)
+}
+
+protocol UITableViewDataSource << UIKit Protocol >> {
+    +tableView(_:numberOfRowsInSection:)
+    +tableView(_:cellForRowAt:)    
+}
+
+protocol UICollectionViewDataSource << UIKit Protocol >> {
+    +collectionView(_:numberOfItemsInSection:)
+    +collectionView(_:cellForItemAt:)
+}
+
+protocol UICollectionViewDelegate << UIKit Protocol >> { 
+    +collectionView(_:didSelectItemAt:)
+}
+
+protocol UITableViewDelegate << UIKit Protocol >> {
+    +tableView(_:didSelectRowAt:)
+}
+
+protocol AVCaptureMetadataOutputObjectsDelegate << AVFoundation Protocol >> {
+    +metadataOutput(_:didOutput:from:)
+}
+
+class UITabBarController << UIKit Class >> {
+    +init(coder:)
+    +viewDidLoad()
+    +tabBar(_:didSelect:)
+}
+
+class UIResponder << UIKit Class >> {}
+
+protocol UIWindowSceneDelegate << UIKit Protocol >> {}
+
+' Packages Classes
+class BaseRestApiProvider << Packages Class >> {
+    +urlSession: URLSession
+    +shouldPrintLog: Bool
+    +init(shouldPrintLog:)
+}
+
+enum BaseRestApiEnum << Packages Enum >> {
+    +baseUrl: String
+    +path: String
+    +method: FriendlyURLSession.HTTPMethod
+    +headers: FriendlyURLSession.Headers?
+    +parameters: FriendlyURLSession.Parameters?
+    +body: FriendlyURLSession.JSON?
+}
+
+class Object << RealmSwiftClass >> {}
+
+' Api->Models
+class ResponseUserModel { 
+  -roleRawValue: Int
+  +accessToken : ResponseAccessTokenModel
+  +role : RoleType
+  {static} CodingKeys: String, CodingKey
+}
+
+class ResponseTeacherInfoModel {
+    +teacherInfo: ResponseUserBaseModel
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseAccessTokenModel {
+    +accessToken: String
+    +expireAt: Int
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseUserBaseModel {
+    +name: String
+    +surname: String
+    +schoolId: Int
+    +userId: Int
+    +classId: Int
+    +phoneNumber: String
+    +nameAndSurname: String
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseSignInModel {
+    +user: ResponseUserModel
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class "ResponseBaseContentModel<T: Decodable>" as ResponseBaseContentModel {
+    +content: T
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseLessonModel {
+    +lesson: String
+    +time: String
+    +auditorium: String
+    +hometasks: [ResponseHometaskModel]?
+    +className: String?
+    +classId: Int?
+    +subjectId: Int
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseLessonsModel {
+    +lessons: [ResponseLessonModel]
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseHometaskModel {
+    +onDate: String
+    +hometask: String
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseShortUserInfoModel {
+    -markRaw: Int?
+    +name: String
+    +surname: String
+    +userId: Int
+    +mark: MarkType
+    +nameAndSurname: String
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponsePupilsModel {
+    +pupils: [ResponseShortUserInfoModel]
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseSubjectMarkModel {
+    -marksRaw: [Int]
+    +subjectName: String
+    +averageMark: Double?
+    +marks: String
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseSubjectMarksModel {
+    +subjects: [ResponseSubjectMarkModel]
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseTeacherPupilModel {
+    +name: String
+    +surname: String
+    +phoneNumber: String
+    +nameAndSurname: String
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+class ResponseTeacherPupilsModel {
+    +pupils: [ResponseTeacherPupilModel]
+    {static} CodingKeys: CodingKey
+    +init(from:)
+}
+
+'Api
+class SchoolsDiaryProvider {
+    +{static} shared: SchoolsDiaryProvider
+    -init()
+    +signIn(email:password:success:failure:)
+    +teacherInfo(success:failure:)
+    +pupilInfo(id:success:failure:)
+    +schedule(for:shouldReturnHometask:success:failure:)
+    +addHometask(lesson:date:hometask)
+    +getPupilsAtLesson(schoolId:classId:subjectId:lessonDate:success:failure:)
+    +addMark(lesson:pupil:lessonDate:mark:)
+    +termMarks(success:failure:)
+    +teacherPupils(success:failure:)
+}
+
+enum SchoolsDiaryApi {
+    +signIn(email:password:)
+    +teacherInfo
+    +pupilInfo(id:)
+    +schedule(weekDay:)
+    +addHometask(schoolId:classId:subjectId:date:hometask:)
+    +getPupilsAtLesson(schooldId:classId:subjectId:lessonDate:)
+    +addMark(schoolId:classId:subjectId:pupilId:lessonDate:mark:)
+    +termMarks
+    +teacherPupils
+}
+
+' BaseItems
+class BaseKeychainModel {
+    +service: String
+    +init(service:)
+    +saveCredentials(_:)
+    +getCredentials(username:)
+    +updatePassword(credentials:)
+    +deleteAccount(username:)
+}
+
+class Credentials << (S, SkyBlue) struct >> {
+    +username: String
+    +password: String?
+    +init(username:password:)
+    +init(email:password:)
+    +init(email:accessToken:)
+}
+
+' Coordinator
+class MainCoordinator {
+    +{static} shared: MainCoordinator
+    +window: UIWindow?
+    -init()
+    +signVC: UINavigationController
+    +tabBar: UITabBarController?
+    +initialController: UIViewController?
+    +currentController: UIViewController?
+    -pushViewController(_:animated:)
+    -present(_:animated:completion:)
+    -makeRootVC(_:)
+    +pushSignController()
+    +pushSettingsController()
+    +makeTabBarAsRoot()
+    +makeSignVCAsRoot()
+    +presentQRScanner()
+    +pushUserViewController(userInfo:)
+    +pushScheduleViewController(dayType:day:isCurrentWeek:)
+    +pushLessonInfoViewController(lesson:day:dayType:)
+    +pushLessonMarksViewController(lesson:day:dayType:)
+    +pushChooseMarkViewController(pupil:completion:)
+    +pushTeacherClassViewController()
+}
+
+' Enums
+enum TimetableDaysType {
+    +{static} monday
+    +{static} tuesday
+    +{static} wednesday
+    +{static} thursday
+    +{static} friday
+    +{static} saturday
+    +title: String
+    +fullTitle: String
+    +backgroundColor: UIColor
+}
+
+enum RoleType {
+    +{static} pupil
+    +{static} teacher
+    +{static} admin
+    +{static} none
+}
+
+enum ScheduleMenuType {
+    +{static} createLesson
+    +{static} addMark
+    +{static} none
+    +actionState(for:)
+}
+
+enum MarkType {
+    +{static} one
+    +{static} two
+    +{static} three
+    +{static} four
+    +{static} five
+    +{static} six
+    +{static} seven
+    +{static} eight
+    +{static} nine
+    +{static} ten
+    +{static} none
+    +color: UIColor?
+    +{static} allCasesWithoutZero: [MarkType]
+}
+
+enum LessonType {
+    +{static} lessonInClass
+    +{static} additionalLesson
+    +actionState(for:)
+}
+
+' Extensions
+class Date << Swift Class >> {
+    -{static} daysInWeek(for:)
+    +{static} daysInCurrentWeek: [Date]
+    +{static} daysInNextWeek: [Date]
+    -getWeekForLabel(for:)
+    +{static} currentWeekForLabel: String
+    +{static} nextWeekForLabel: String
+    +day(_:isCurrentWeek:)
+    +toFormat(_:)
+    +ddMMFormat: String
+    +ddMMyyyyFormat: String
+    +ddMMyyFormat: String
+}
+
+' Extensions->UIKit+Ext
+class UIImageView << UIKit Class >> {
+    +{static} default: UIImageView
+    +setImage(from:)
+    +setImage(from:withHeader:)
+    -setImage(_:cacheType:)
+}
+
+class UICollectionView << UIKit Class >> {
+    +register(_:)
+}
+
+class UIFont << UIKit Class >> {
+    +luckiestGuyRegular(size:)
+    +sfMonoRegular(size:)
+}
+
+class UICollectionViewCell << UIKit Class >> {
+    +{static} id: String
+    +init(frame:)
+    +init(coder:)
+}
+
+class UIViewController << UIKit Class >> {
+    +createNavigationController: UINavigationController
+    +configureNavigationController(title:preferesLargeTitles:)
+    +init(coder:)
+    +viewDidLoad()
+    +viewWillAppear(_:)
+    +viewWillDisappear(_:)
+    +touchesBegan(_:with:)
+}
+
+' Helpful Files
+enum Constants {
+    +{static} Images
+    +{static} isDebug: Bool
+    +{static} baseApiUrl: String
+}
+
+enum Images {
+    +{static} signBackground
+    +{static} userExampleAvatar
+    +{static} userExampleQR
+    +{static} settingsIcon
+    +{static} signOutIcon
+    +{static} profileIcon
+    +{static} menuNavigationButtonIcon
+    +{static} timetableIcon
+    +{static} leftBottomNavigationButtonIcon
+    +{static} rightBottomNavigationButtonIcon
+    +{static} marksIcon
+    +image: UIImage?
+}
+
+' Managers
+class SettingsManager {
+    +{static} shared: SettingsManager
+    -init()
+    +realmConfiguration: Realm.Configuration
+    +account: Account
+    +signOut()
+}
+
+' Models
+class Account {
+    -emailKey: String
+    -expireAtKey: String
+    -accountKey: String
+    -accessTokenKey: String
+    +email: String
+    +expireAt: Int
+    +password: String?
+    +accessToken: String?
+    +shouldRefreshToken: Bool
+    -credentialsKeychain: BaseKeychainModel
+    -accessTokenKeychain: BaseKeychainModel
+    +init()
+    +saveCredentials(_:)
+    +saveAccessToken(_:expireAt:)
+    +updateAccessToken(_:expireAt:)
+    +signOut()
+}
+
+' Packages->SchoolDiaryUIComponents->Sources->SchoolDiaryUIComponents->BaseUI
+class BaseUICollectionViewCell {
+    +setupInterface()
+    +setupLayout()
+    +setupConstraints()
+}
+
+class BaseUITableViewCell {
+    +setupInterface()
+    +setupLayout()
+    +setupConstraints()
+}
+
+class BaseUITextField {
+    -padding: UIEdgeInsets
+    +setupTextField()
+}
+
+class BaseUIView {
+    +setupInterface()
+    +setupLayout()
+    +setupConstraints()
+}
+
+protocol BaseUIViewControllerProtocol {
+    +spinner(isShow:)
+}
+
+class BaseUIViewController {
+    +setupInterface()
+    +setupLayout()
+    +setupConstraints()
+}
+
+' Packages->SchoolDiaryUIComponents->Sources->SchoolDiaryUIComponents->Extensions->UIKit+Ext
+class UIApplication << UIKit Class >> {
+    +currentWindow: UIWindow?
+}
+
+class UIColor << UIKit Class >>  {
+    +init(hex:)
+}
+
+class UIEdgeInsets << UIKit Class >> {
+    +init(horizontal:vertical:)
+}
+
+class UITableView << UIKit Class >> {
+    +register(_:)
+}
+
+' Packages->SchoolDiaryUIComponents->Sources->SchoolDiaryUIComponents->UI->DatePickers
+class DatePickerView {
+    -datePicker: UIDatePicker
+    -changeClosure: ((Date) -> ())?
+    -dismissClosure: (() -> ())?
+    -blurEffect: UIBlurEffect
+    -blurredEffectView: UIVisualEffectView
+    +date: Date?
+    +minimumDate: Date?
+    +pickerHolderView: UIView
+    +init(changeClosure:dismissClosure:)
+    -initialSetup()
+    -tapAction(_:)
+    -didChangeValueAction(_:)
+}
+
+' Packages->SchoolDiaryUIComponents->Sources->SchoolDiaryUIComponents->UI->TextFields
+class PasswordTextField {
+    -hideButton: UIButton
+    -hideButtonDidTap(_:)
+}
+
+' Packages->SchoolDiaryUIComponents->Sources->SchoolDiaryUIComponents->UI->TextViews
+class PlaceholderTextView {
+    +contentText: String?
+    +contentTextColor: UIColor?
+    +placeholder: String?
+    +placeholderColor: UIColor?
+    -isPlaceholderActive: Bool
+}
+
+' Packages->SchoolDiaryUIComponents->Sources->SchoolDiaryUIComponents->UI->Labels
+class LabelInView {
+    -mainLabel: UILabel
+    +text: String?
+    +font: UIFont?
+}
+
+' Realm
+class "RealmManager<T: Object>" as RealmManager {
+    -realm: Realm
+    +write(object:)
+    +read()
+    +update(realmBlock:)
+    +delete(object:)
+}
+
+' Realm->Models
+class LocalUserModel {
+    +roleRawType: Int
+    +name: String
+    +surname: String
+    +schooldId: Int
+    +userId: Int
+    +classId: Int
+    +phoneNumber: String
+    +role: RoleType
+    +nameAndSurname: String
+    +init(user:)
+    +init(teacher:)
+    +init(role:name:surname:schoolId:userId:classId:phoneNumber:)
+}
+
+class LocalTeacherModel {}
+
+' UI->TableViewCells->PupilTableViewCell
+class PupilTableViewCell {
+    -pupilImageView: UIImageView
+    -pupilInfoLabel: UILabel
+    -pupilPhoneNumber: UILabel
+    -pupilInfoStackView: UIStackView
+    -contentStackView: UIStackView
+    +configure(pupil:)
+}
+
+' UI->TableViewCells->SubjectMarksTableViewCell
+class SubjectMarksTableViewCell {
+    -subjectLabel: UILabel
+    -marksLabel: UILabel
+    -verticalStackView: UIStackView
+    -averageMarkLabel: UILabel
+    +configure(subject:)
+}
+
+' UI->TableViewCells->PupilMarkTableViewCell
+class PupilMarkTableViewCell {
+    -pupilLabel: UILabel
+    -markLabel: LabelInView
+    -mainView: UIView
+    -dayType: TimetableDaysType?
+    -selectedMark: MarkType
+    -user: ResponseShortUserInfoModel?
+    +configure(user:dayType:)
+    +updateMark(_:)
+}
+
+' UI->TableViewCells->ScheduleTableViewCell
+class ScheduleTableViewCell {
+    +{static}cellHeight: CGFloat
+    -timeLabel: UILabel
+    -subjectLabel: UILabel
+    -homeworkLabel: UILabel
+    -verticalStackView: UIStackView
+    -auditoriumLabel: UILabel
+    +configure(withLesson:forDate:)
+}
+
+' UI->TableViewCells->SettingsTableViewCell
+enum SettingsTableViewCellType {
+    +{static} button
+    +{static} switch
+}
+
+class SettingsTableViewCell {
+    -titleLabel: UILabel
+    -actionSwitch: UISwitch
+    -actionButton: UIButton
+    -actionImageView: UIImageView
+    -mainView: UIView
+    -actionClosure: ((_ switchValue: Bool?) -> ())?
+    -type: SettingsType?
+    +setupCell(type:action:)
+    -controlAction()
+}
+
+' UI->CollectionViewCells->MarkCollectionViewCell
+class MarkCollectionViewCell {
+    -markLabel: UILabel
+    -baseView: UIView
+    +configure(withMark:)
+}
+
+' UI->CollectionViewCells->TimetableCollectionViewCell
+class TimetableCollectionViewCell {
+    -dayLabel: UILabel
+    -baseView: UIView
+    +configure(withDay:)
+}
+
+' UI->ViewControllers->TeacherPupilsViewController
+class TeacherPupilsViewController {
+    -pupilTableView: UITableView
+    -pupils: [ResponseTeacherPupilModel]
+    +init()
+    -setupNavigationController()
+}
+
+' UI->ViewControllers->MarksViewController
+protocol MarksViewControllerProtocol {
+    +reloadData()
+}
+
+class MarksViewController {
+    -marksTableHeaderView: MarksTableHeaderView
+    -marksTableView: UITableView
+    -presenter: MarksPresenterProtocol
+    +init()
+}
+
+protocol MarksPresenterProtocol {
+    +viewDidLoad()
+    +subject(at:)
+    +subjectsCount: Int
+}
+
+class MarksPresenter {
+    -view: MarksViewControllerProtocol
+    -subjects: [ResponseSubjectMarkModel]
+    +init(view:)
+}
+
+' UI->ViewControllers->ChooseMarkViewController
+class ChooseMarkCompletion << (T, Yellow) Typealias >> {}
+
+class ChooseMarkViewController {
+    -pupilLabel: LabelInView
+    -marksColletionView: UICollectionView
+    -marks: [MarkType]
+    -pupil: ResponseShortUserInfoModel
+    -completion: ChooseMarkCompletion
+    +init(withPupil:completion:)
+}
+
+' UI->ViewControllers->LessonMarksViewController
+protocol LessonMarksViewControllerProtocol {
+    +popViewController()
+    +reloadData()
+    +updateMark(at:with:)
+}
+
+class LessonMarksViewController {
+    -dateLabel: LabelInView
+    -lessonTypeLabel: UILabel
+    -lessonTypeButton: UIButton
+    -lessonInfoStackView: UIStackView
+    -lessonInfoContentView: UIView
+    -pupilLabel: UILabel
+    -pupilsTableView: UITableView
+    -pupilsContentView: UIView
+    -dateType: TimetableDaysType
+    -day: Date
+    -lesson: ResponseLessonModel
+    -lessonType: LessonType
+    -lessonTypeMenu: UIMenu
+    -presenter: LessonMarksViewControllerProtocol
+    +init(lesson:date:type:)
+    +setupNavigationController()
+}
+
+protocol LessonMarksPresenterProtocol {
+    +viewDidLoad()
+    +viewWillDisappear()
+    +user(for:)
+    +didSelect(at:)
+    +userCount: Int
+}
+
+class PupilMarkModel << (S, SkyBlue) struct >> {
+    +userId: Int
+    +mark: MarkType
+}
+
+class LessonMarksPresenter {
+    -lesson: ResponseLessonModel
+    -lessonDate: Date
+    -view: LessonMarksViewControllerProtocol
+    -pupils: [ResponseShortUserInfoModel]
+    -pupilMarks: [PupilMarkModel]
+    +userCount: Int
+    +init(lesson:date:view:)
+    +viewDidLoad()
+    +viewWillDisappear()
+    -fetchPupils()
+    +user(for:)
+    +didSelect(at:)
+}
+
+' UI->ViewControllers->LessonInfoViewController
+class LessonInfoViewController {
+    -dateLabel: LabelInView
+    -lessonThemeLabel: UILabel
+    -lessonThemeTextView: PlaceholderTextView
+    -lessonThemeStackView: UIStackView
+    -lessonThemeContentView: UIView
+    -hometaskLabel: UILabel
+    -dateHometaskLabel: UILabel
+    -dateHometaskButton: UIBlurEffect
+    -dateHometaskContentView: UIView
+    -hometaskInfoLabel: UILabel
+    -hometaskInfoTextView: UITextView
+    -hometaskInfoStackView: UIStackView
+    -hometaskInfoContentView: UIView
+    -datePicker: DatePickerView
+    -day: Date
+    -dateType: TimetableDaysType
+    -lesson: ResponseLessonModel
+    -selectedDay: Date?
+    +init(with:day:dateType:)
+    -setupNavigationController()
+    -presentDatePicker(_:)
+}
+
+' UI->ViewControllers->ScheduleViewController
+protocol ScheduleViewControllerProtocol {
+    +reloadData()
+    +popViewController()
+    +refreshScreen()
+    +reloadMenuButton()
+}
+
+class ScheduleViewController {
+    -scheduleTableHeaderView: ScheduleTableHeaderView
+    -scheduleTableView: UITableView
+    -leftWeekNavigationButton: UIButton
+    -dayLabel: LabelInView
+    -rightWeekNavigationButton: UIButton
+    -presenter: SchedulePresenterProtocol?
+    +init(dayType:day:isCurrentWeek)
+    -setupNavigationController()
+    -bottomNavigationButtonDidTap(_:)
+}
+
+protocol SchedulePresenterProtocol {
+    +lessonsCount: Int
+    +tableViewHeight: CGFloat
+    +navigationTitle: String
+    +dayText: String
+    +headerColor: UIColor
+    +isLeftNavigationButtonEnabled
+    +isRightNavigationButtonEnabled
+    +menuButton: UIMenu?
+
+    +viewDidLoad()
+    +configureCell(_:at:)
+    +bottomNavigationButtonDidTap(tag:)
+    +didSelect(at:)
+}
+
+class SchedulePresenter {
+    -lessons: [ResponseLessonModel]
+    -day: TimetableDaysType
+    -date: Date
+    -view: ScheduleViewControllerProtocol?
+    -days: [TimetableDaysType]
+    -daysArray: [Date]
+    -currentMode: ScheduleMenuType
+    +init(day:date:isCurrentWeek:view:)
+}
+
+' UI->ViewControllers->SignViewController
+enum SignControllerType {
+    +{static} initialScreen
+    +{static} signScreen
+}
+
+protocol SignViewControllerProtocol {
+    +email: String?
+    +password: String?
+}
+
+class SignViewController {
+    -signBackgroundImageView: UIImageView
+    -titleLabel: UILabel
+    -emailTextField: BaseUITextField
+    -passwordTextField: PasswordTextField
+    -resetPasswordButton: UIButton
+    -signButton: UIButton
+    -presenter: SignPresenterProtocol
+    +init(withType:)
+    -signAction(_:)
+}
+
+protocol SignPresenterProtocol {
+    +signButtonHorizontalInsets: UIEdgeInsets
+    +signAction()
+    +setView(_:)
+}
+
+class SignPresenter {
+    -controllerType: SignControllerType
+    -view: SignViewControllerProtocol?
+    +init(withType:)
+}
+
+' UI->ViewControllers->SettingsViewController
+enum SettingsType {
+    +{static} notifications
+    +{static} signOut
+    +cellType: SettingsTableViewCellType
+    +title: String
+    +buttonImage: UIImage?
+    +selectionStyle: UITableViewCell.SelectionStyle
+}
+
+class SettingsViewController {
+    -userHeaderTableView: UserSettingsTableHeaderView
+    -settingsTableView: UITableView
+    -settings: [SettingsType]
+    +init()
+}
+
+' UI->ViewControllers->QRScannerViewController
+class QRScannerViewController {
+    -captureSession: AVCaptureSession
+    -previewLayer: AVCaptureVideoPreviewLayer
+    +init()
+    -setupCapture()
+}
+
+' UI->ViewControllers->TimetableViewController
+protocol TimetableProtocol {
+    +daysCount: Int
+    +isCurrentWeek: Bool
+    +day(at:)
+    +collectionView(didSelectAt:)
+}
+
+class TimetablePresenter {
+    -days: [TimetableDaysType]
+    -isCurrentWeekPrivate: Bool
+    +init()
+}
+
+class TimetableViewController {
+    -navigationTitleLabel: UILabel
+    -timetableCollectionView: UICollectionView
+    -leftWeekNavigationButton: UIButton
+    -weekDaysLabel: LabelInView
+    -rightWeekNavigationButton: UIButton
+    -presenter: TimetableProtocol
+    +init()
+    -setupNavigationController()
+    -bottomNavigationButtonDidTap(_:)
+}
+
+' UI->ViewControllers->TeacherViewController
+class TeacherViewController {
+    -classButton: UIButton
+    +init()
+    -classButtonDidTap(_:)
+}
+
+' UI->ViewControllers->PupilViewController
+protocol PupilPresenterProtocol {
+    +fetchTeacherInfoIfNeeded()
+    +setView(_:)
+}
+
+class PupilPresenter {
+    -view: PupilViewControllerProtocol?
+    +init()
+}
+
+protocol PupilViewControllerProtocol {
+    +updateTeacherInfo()
+}
+
+class PupilViewController {
+    -teacherInfoModel: TeacherInfoView()
+    -presenter: PupilPresenterProtocol
+    +init()
+}
+
+' UI->ViewControllers->UserViewController
+enum UserViewType {
+    +{static} currentUser
+    +{static} pupilInfo
+}
+
+class UserViewController {
+    -userInfoView: UserInfoView
+    -qrImageView: UIImageView
+    -controllerType: UserViewType
+    -userInfo: ResponseUserBaseModel?
+    +init(controllerType:userInfo:)
+    -setupNavigationController9)
+    -openSettingsAction()
+}
+
+' UI->Views->MarksTableHeaderView
+class MarksTableHeaderView {
+    -colorTopView: UIView
+    -subjectLabel: UILabel
+    -markLabel: UILabel
+    +init()
+}
+
+' UI->Views->ScheduleTableHeaderView
+class ScheduleTableHeaderView {
+    -colorTopView: UIView
+    -timeLabel: UILabel
+    -subjectLabel: UILabel
+    -auditoriumLabel: UILabel
+    -topColor: UIColor?
+    +init()
+}
+
+' UI->Views->UserInfoView
+class UserInfoView {
+    -userImageView: UIImageView
+    -nameLabel: UILabel
+    -schoolLabel: UILabel
+    -infoStackView: UIStackView
+    -viewType: UserViewType
+    -userInfo: ResponseUserBaseModel?
+    +init(viewType:userInfo:)
+}
+
+' UI->Views->TeacherInfoView
+class TeacherInfoView {
+    -userImageView: UIImageView
+    -teacherLabel: UILabel
+    -teacherNameLabel: UILabel
+    -infoStackView: UIStackView
+    +init()
+    +updateTeacherInfo()
+}
+
+' UI->Views->UserSettingsTableHeaderView
+class UserSettingsTableHeaderView {
+    -userImageView: UIImageView
+    -nameLabel: UILabel
+    -emailLabel: UILabel
+    -infoStackView: UIStackView
+    +init()
+}
+
+' UI->TabBarControllers->PupilTabBarController
+class PupilTabBarController {
+    +init()
+    +configureViewController()
+}
+
+' UI->TabBarControllers->PupilTabBarController
+class PupilTabBarController {
+    +init()
+    +configureViewController()
+}
+
+' Root
+class SceneDelegate {
+    +window: UIWindow?
+    +scene(_:willConnectTo:options:)
+    +sceneDidDisconnect(_:)
+    +sceneDidBecomeActive(_:)
+    +sceneWillResignActive(_:)
+    +sceneWillEnterForeground(_:)
+    +sceneDidEnterForeground(_:)
+}
+
+' Relationships
+ResponseUserBaseModel <|-- ResponseUserModel : inherits
+LocalUserModel <|-- LocalTeacherModel : inherits
+MarksViewControllerProtocol <|-- MarksViewController : inherits
+MarksPresenterProtocol <|-- MarksPresenter : inherits
+LessonMarksViewControllerProtocol <|-- LessonMarksViewController : inherits
+LessonMarksPresenterProtocol <|-- LessonMarksPresenter : inherits
+ScheduleViewControllerProtocol <|-- ScheduleViewController : inherits
+SchedulePresenterProtocol <|-- SchedulePresenter : inherits
+SignViewControllerProtocol <|-- SignViewController : inherits
+SignPresenterProtocol <|-- SignPresenter : inherits
+TimetableProtocol <|-- TimetablePresenter : inherits
+UserViewController <|-- TeacherViewController : inherits
+PupilPresenterProtocol <|-- PupilPresenter : inherits
+UserViewController <|-- PupilViewController : inherits
+
+' Swift Relationships
+Decodable <|-- ResponseTeacherInfoModel : inherits
+Decodable <|-- ResponseAccessTokenModel : inherits
+Decodable <|-- ResponseUserBaseModel : inherits
+Decodable <|-- ResponseSignInModel : inherits
+Decodable <|-- ResponseBaseContentModel : inherits
+Decodable <|-- ResponseLessonModel : inherits
+Decodable <|-- ResponseLessonsModel : inherits
+Decodable <|-- ResponseHometaskModel : inherits
+Decodable <|-- ResponseShortUserInfoModel : inherits
+Decodable <|-- ResponsePupilsModel : inherits
+Decodable <|-- ResponseSubjectMarkModel : inherits
+Decodable <|-- ResponseSubjectMarksModel : inherits
+Decodable <|-- ResponseTeacherPupilModel : inherits
+Decodable <|-- ResponseTeacherPupilsModel : inherits
+
+NSObject <|-- MainCoordinator : inherits
+
+UITabBarControllerDelegate <|-- MainCoordinator : inherits
+
+Int <|-- TimetableDaysType : inherits
+Int <|-- RoleType : inherits
+
+CaseIterable <|-- TimetableDaysType : inherits
+CaseIterable <|-- MarkType : inherits
+CaseIterable <|-- LessonType : inherits
+CaseIterable <|-- SettingsType : inherits
+
+String <|-- MarkType : inherits
+String <|-- LessonType : inherits
+
+UICollectionViewCell <|-- BaseUICollectionViewCell : inherits
+
+UITableViewCell <|-- BaseUITableViewCell : inherits
+
+UITextField <|-- BaseUITextField : inherits
+
+UIView <|-- BaseUIView : inherits
+
+AnyObject <|-- BaseUIViewControllerProtocol : inherits
+AnyObject <|-- ScheduleViewControllerProtocol : inherits
+
+UIViewController <|-- BaseUIViewController : inherits
+
+UITableViewDataSource <|-- MarksViewController : inherits
+UITableViewDataSource <|-- LessonMarksViewController : inherits
+UITableViewDataSource <|-- ScheduleViewController : inherits
+UITableViewDataSource <|-- SettingsViewController : inherits
+
+UICollectionViewDataSource <|-- ChooseMarkViewController : inherits
+UICollectionViewDataSource <|-- TimetableViewController : inherits
+
+UICollectionViewDelegate <|-- ChooseMarkViewController : inherits
+UICollectionViewDelegate <|-- TimetableViewController : inherits
+
+UITableViewDelegate <|-- TeacherPupilsViewController : inherits
+UITableViewDelegate <|-- LessonMarksViewController : inherits
+UITableViewDelegate <|-- ScheduleViewController : inherits
+UITableViewDelegate <|-- SettingsViewController : inherits
+
+AVCaptureMetadataOutputObjectsDelegate <|-- QRScannerViewController : inherits
+
+UITabBarController <|-- PupilTabBarController : inherits
+UITabBarController <|-- TeacherTabBarController : inherits
+
+UIResponder <|-- SceneDelegate : inherits
+
+UIWindowSceneDelegate <|-- UIWindow : inherits
+
+' Packages Relationships
+BaseRestApiProvider <|-- SchoolsDiaryProvider : inherits
+
+BaseRestApiEnum <|-- SchoolsDiaryApi : inherits
+
+Object <|-- LocalUserModel : inherits
+
+' SchoolDiaryUIComponents Relationships
+
+BaseUIViewControllerProtocol <|-- BaseUIViewController : inherits
+BaseUIViewControllerProtocol <|-- SignViewControllerProtocol : inherits
+BaseUIViewControllerProtocol <|-- PupilViewControllerProtocol : inherits
+
+BaseUIView <|-- DatePickerView : inherits
+BaseUIView <|-- LabelInView : inherits
+BaseUIView <|-- MarksTableHeaderView : inherits
+BaseUIView <|-- ScheduleTableHeaderView : inherits
+BaseUIView <|-- UserInfoView : inherits
+BaseUIView <|-- TeacherInfoView : inherits
+BaseUIView <|-- UserSettingsTableHeaderView : inherits
+
+BaseUITextField <|-- PasswordTextField : inherits
+
+UITextView <|-- PlaceholderTextView : inherits
+
+UITextViewDelegate <|-- PlaceholderTextView : inherits
+
+BaseUITableViewCell <|-- PupilTableViewCell : inherits
+BaseUITableViewCell <|-- SubjectMarksTableViewCell : inherits
+BaseUITableViewCell <|-- PupilMarkTableViewCell : inherits
+BaseUITableViewCell <|-- ScheduleTableViewCell : inherits
+BaseUITableViewCell <|-- SettingsTableViewCell : inherits
+
+BaseUICollectionViewCell <|-- MarkCollectionViewCell : inherits
+BaseUICollectionViewCell <|-- TimetableCollectionViewCell : inherits
+
+BaseUIViewController <|-- TeacherPupilsViewController : inherits
+BaseUIViewController <|-- MarksViewController : inherits
+BaseUIViewController <|-- ChooseMarkViewController : inherits
+BaseUIViewController <|-- LessonMarksViewController : inherits
+BaseUIViewController <|-- LessonInfoViewController : inherits
+BaseUIViewController <|-- ScheduleViewController : inherits
+BaseUIViewController <|-- SignViewController : inherits
+BaseUIViewController <|-- SettingsViewController : inherits
+BaseUIViewController <|-- QRScannerViewController : inherits
+BaseUIViewController <|-- TimetableViewController : inherits
+BaseUIViewController <|-- UserViewController : inherits
+
+@enduml
